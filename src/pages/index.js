@@ -1,9 +1,10 @@
 import Head from 'next/head'
-
+import apolloClient from './../apollo'
 import Link from 'next/link'
+import { gql } from '@apollo/client'
 
-export default function Home({ sampleData }) {
-  console.log(sampleData)
+export default function Home({ posts }) {
+  console.log(posts)
   return (
     <>
       <Head>
@@ -16,11 +17,12 @@ export default function Home({ sampleData }) {
         <h1>Hello,</h1>
         <Link href='/about'>Go to about</Link>
 
-        {sampleData &&
-          sampleData.map((data, index) => (
+        {posts &&
+          posts.map((data, index) => (
             <div key={data.id}>
-              <h3>{data.name}</h3>
-              <p>{data.content}</p>
+              <h3>{data.productDetails.naslov}</h3>
+              <p>{data.productDetails.prviOpis}</p>
+              <hr />
             </div>
           ))}
       </div>
@@ -29,17 +31,64 @@ export default function Home({ sampleData }) {
 }
 
 export const getStaticProps = async () => {
-  // ovde mozes da ucinis api poziv da znas - direktno
+  const { data } = await apolloClient.query({
+    query: gql`
+      query {
+        posts(where: { categoryName: "featured" }) {
+          nodes {
+            productDetails {
+              brend
+              category
+              drugiOpis
+              k1
+              k2
+              k3
+              k4
+              k5
+              naslov
+              prviOpis
+              subcategory
+              slika {
+                sourceUrl
+              }
+            }
+            id
+            slug
+          }
+        }
+        mediaItems(where: { title: "jugovideo" }) {
+          nodes {
+            mediaItemUrl
+            title
+          }
+        }
+      }
+    `,
+  })
 
-  const sampleData = [
-    { id: 1, name: 'Sample 1', content: 'This is sample 1' },
-    { id: 2, name: 'Sample 2', content: 'This is sample 2' },
-    { id: 3, name: 'Sample 3', content: 'This is sample 3' },
-  ]
+  const posts = data.posts.nodes
+  const media = data.mediaItems.nodes
 
   return {
     props: {
-      sampleData,
+      posts,
+      media,
     },
   }
 }
+
+// export const getStaticProps = async () => {
+//   // ovde mozes da ucinis api poziv da znas - direktno
+
+//   const sampleData = [
+//     { id: 1, name: 'Sample 1', content: 'This is sample 1' },
+//     { id: 2, name: 'Sample 2', content: 'This is sample 2' },
+//     { id: 3, name: 'Sample 3', content: 'This is sample 3' },
+//   ]
+
+//   return {
+//     props: {
+//       sampleData,
+//     },
+//   }
+// }
