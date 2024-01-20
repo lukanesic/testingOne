@@ -2,9 +2,10 @@ import Head from 'next/head'
 import apolloClient from './../apollo'
 import Link from 'next/link'
 import { gql } from '@apollo/client'
+import { useRouter } from 'next/router'
 
 export default function Home({ posts }) {
-  console.log(posts)
+  const router = useRouter()
   return (
     <>
       <Head>
@@ -22,6 +23,7 @@ export default function Home({ posts }) {
             <div key={data.id}>
               <h3>{data.productDetails.naslov}</h3>
               <p>{data.productDetails.prviOpis}</p>
+              <Link href={`/${data.slug}`}>Dalje</Link>
               <hr />
             </div>
           ))}
@@ -74,21 +76,6 @@ export const getStaticProps = async () => {
       posts,
       media,
     },
+    revalidate: 120,
   }
 }
-
-// export const getStaticProps = async () => {
-//   // ovde mozes da ucinis api poziv da znas - direktno
-
-//   const sampleData = [
-//     { id: 1, name: 'Sample 1', content: 'This is sample 1' },
-//     { id: 2, name: 'Sample 2', content: 'This is sample 2' },
-//     { id: 3, name: 'Sample 3', content: 'This is sample 3' },
-//   ]
-
-//   return {
-//     props: {
-//       sampleData,
-//     },
-//   }
-// }
