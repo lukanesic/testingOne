@@ -666,7 +666,7 @@ h2 {
   top: 45%;
   font-size: 1.5rem;
   cursor: pointer;
-  z-index: 40;
+  z-index: 39;
 }
 @media (min-width: 1280px) and (max-width: 1439px) {
   .slick2 .next-arrow {
