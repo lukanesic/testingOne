@@ -1,0 +1,68 @@
+h2 {
+  font-size: 28px;
+  letter-spacing: -0.7px;
+  margin-bottom: 3rem;
+
+  @include Pads() {
+    width: 500px;
+    font-size: 32px;
+  }
+
+  @include PadsPro() {
+    width: 500px;
+    font-size: 32px;
+  }
+
+  @include Laptops() {
+    width: 600px;
+    font-size: 46px;
+  }
+
+  @include HiDPI() {
+    letter-spacing: -2px;
+    width: 500px;
+    font-size: 46px;
+  }
+}
+
+.subtitle-big {
+  font-size: 48px;
+  letter-spacing: -0.7px;
+  margin-bottom: 3rem;
+
+  @include Pads() {
+    width: 100%;
+    font-size: 62px;
+  }
+
+  @include PadsPro() {
+    width: 100%;
+    font-size: 72px;
+  }
+
+  @include Laptops() {
+    font-size: 86px;
+    width: 100%;
+  }
+
+  @include HiDPI() {
+    font-size: 98px;
+    width: 100%;
+  }
+}
+
+.subtitle-span {
+  width: fit-content;
+  display: block;
+  color: rgba(51, 51, 51, 0.499);
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+
+  @include Laptops() {
+    font-size: 22px;
+  }
+
+  @include HiDPI() {
+    font-size: 24px;
+  }
+}

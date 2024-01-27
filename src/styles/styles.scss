@@ -1,0 +1,350 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+@import './mediaqueries';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  // display: grid;
+  // place-content: center;
+  overflow-x: hidden;
+}
+
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
+a {
+  text-decoration: unset;
+}
+
+.main {
+  // border: 1px solid red;
+  margin: 0 auto;
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: repeat(5, 45%);
+  place-content: center;
+  // padding-bottom: 6rem;
+  margin-top: 10rem;
+}
+
+.framer {
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 1rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 65% 35%);
+  margin-bottom: 10rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+
+  .backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .content {
+    padding: 2rem 1.5rem;
+    text-align: left;
+    margin-top: 1rem;
+
+    h3 {
+      font-size: 1.6rem;
+      font-weight: 500;
+
+      letter-spacing: -0.5px;
+    }
+
+    span {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.7);
+      margin: 1rem 0;
+      display: block;
+    }
+  }
+}
+
+.titles {
+  display: grid;
+  grid-template-columns: repeat(5, 45%);
+  place-content: center;
+
+  div {
+    span {
+      display: block;
+      cursor: pointer;
+      text-align: center;
+      font-size: 2rem;
+    }
+  }
+}
+
+.traktori {
+  width: 1500px;
+  margin: 1rem auto;
+  height: 500px;
+  border-radius: 20px;
+  background-color: rgba(214, 62, 42, 0.05);
+  position: relative;
+  overflow: hidden;
+
+  .content {
+    position: absolute;
+    left: 6rem;
+    top: 6rem;
+
+    span {
+      font-size: 1rem;
+      font-weight: 200;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .button {
+      border: 1px solid #333;
+      font-size: 0.8rem;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      font-weight: 400;
+      border-radius: 20px;
+      color: #333;
+    }
+
+    h2 {
+      font-size: 5rem;
+      margin-top: -0.5rem;
+      font-weight: 600;
+      color: #333;
+    }
+  }
+
+  .img {
+    position: absolute;
+    top: -8rem;
+    right: -7rem;
+
+    object-fit: cover;
+    transform: rotate(-12deg);
+  }
+}
+
+.two {
+  display: grid;
+  grid-template-columns: repeat(2, 49.5%);
+  gap: 1%;
+  width: 1500px;
+  margin: 0 auto;
+  border-radius: 20px;
+  height: 400px;
+  margin-bottom: 1rem;
+
+  .container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+
+    .content {
+      position: absolute;
+      left: 6rem;
+      top: 6rem;
+
+      span {
+        font-size: 0.8rem;
+        font-weight: 200;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .button {
+        border: 1px solid #333;
+        font-size: 0.8rem;
+        padding: 1rem 2rem;
+        cursor: pointer;
+        font-weight: 400;
+        border-radius: 20px;
+        color: #333;
+      }
+
+      h2 {
+        font-size: 3rem;
+        margin-top: -0.5rem;
+        font-weight: 600;
+        color: #333;
+      }
+    }
+
+    .img {
+      position: absolute;
+      top: 5rem;
+      right: -15rem;
+
+      object-fit: cover;
+    }
+
+    .wider {
+      right: -10rem;
+      top: 5rem;
+      transform: rotate(-30deg);
+    }
+
+    .ratar {
+      right: -28rem;
+    }
+  }
+}
+
+.preporuka {
+  height: 760px;
+  background-color: #cecece28;
+  margin-bottom: 10rem;
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  place-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  overflow: hidden;
+
+  .preporuka-card {
+    height: 650px;
+    width: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    h3 {
+      font-weight: 400;
+      font-size: 1.6rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .small {
+      font-size: 12px;
+      display: block;
+      color: rgba(0, 0, 0, 0.9);
+      font-weight: 500;
+    }
+
+    .light {
+      font-weight: 200;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+
+      .top-l {
+        width: 60%;
+      }
+
+      .top-r {
+        text-align: right;
+      }
+    }
+
+    .slika {
+      width: 60%;
+      height: 250px;
+      position: relative;
+      margin: 2rem auto;
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(3, 33%);
+      text-align: center;
+
+      .spec-box {
+        border-right: 1px solid black; /* Dodajte debljinu i boju granice prema potrebi */
+
+        .large {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: #333;
+        }
+      }
+
+      /* Uklonite border-right za posljednji .spec div */
+      .spec-box:last-child {
+        border-right: none;
+      }
+    }
+
+    .btn {
+      border: 2px solid #333;
+      text-align: center;
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 0.8rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      color: #fff;
+      background-color: #333;
+    }
+  }
+
+  .mini {
+    height: 450px;
+    width: 300px;
+    background-color: rgba(51, 51, 51, 0.288);
+    box-shadow: unset !important;
+    position: relative;
+    z-index: 10000;
+
+    h3 {
+      font-size: 1rem !important;
+    }
+
+    .small {
+      font-size: 8px !important;
+    }
+
+    .large {
+      font-size: 0.8rem !important;
+    }
+
+    .btn {
+      padding: 0.5rem !important;
+      font-size: 0.5rem !important;
+    }
+
+    .slika {
+      height: 150px;
+    }
+  }
+}
+
+// ui
+@import './../components/ui/Button/button';
+@import './../components/ui/Heading1/heading1';
+@import './../components/ui/Video/video';
+@import './../components/ui/Heading2/heading2';
+@import './../components/ui/BrandCard/brandCard';
+@import './../components/ui/Slick/slick';
+@import './../components/ui/Subtitle/subtitle';
+@import './../components/ui/Credits/credits';
+@import './../components/ui/Slick2/slick2';
+
+// containers
+@import './../components/container/Nav/nav';
+@import './../components/container/Hero/hero';
+@import './../components/container/TextContent/textContent';
+@import './../components/container/Footer/footer';

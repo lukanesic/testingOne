@@ -1,0 +1,54 @@
+.slider {
+  position: relative;
+  padding: 0 1rem;
+  width: 90%;
+  margin: 0 auto;
+
+  @include PadsPro() {
+    max-width: 1024px;
+  }
+
+  @include Laptops() {
+    max-width: 1200px;
+  }
+
+  @include HiDPI() {
+    max-width: 1500px;
+  }
+
+  .next-arrow {
+    display: inline;
+    position: absolute;
+    right: -1.4rem;
+    top: 45%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 40;
+
+    @include Laptops() {
+      right: -3rem;
+    }
+
+    @include HiDPI() {
+      right: -3rem;
+    }
+  }
+
+  .prev-arrow {
+    display: inline;
+    position: absolute;
+    left: -1.4rem;
+    top: 45%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 40;
+
+    @include Laptops() {
+      left: -3rem;
+    }
+
+    @include HiDPI() {
+      left: -3rem;
+    }
+  }
+}

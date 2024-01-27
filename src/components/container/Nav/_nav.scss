@@ -1,0 +1,144 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  width: 90%;
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 1500px;
+
+  .logo {
+    width: 110px;
+    height: 40px;
+    position: relative;
+
+    @include Pads() {
+      width: 170px;
+      height: 60px;
+    }
+
+    @include PadsPro() {
+      width: 170px;
+      height: 60px;
+    }
+
+    @include Laptops() {
+      width: 170px;
+      height: 60px;
+    }
+
+    @include HiDPI() {
+      width: 170px;
+      height: 60px;
+    }
+  }
+
+  .liItems {
+    justify-content: space-between;
+    align-items: center;
+    display: none;
+
+    @include Laptops() {
+      display: flex;
+    }
+
+    @include HiDPI() {
+      display: flex;
+    }
+
+    li {
+      list-style-type: none;
+      margin: 0 1.5rem;
+      font-size: 1rem;
+      color: rgba(0, 0, 0, 0.5);
+      transition: color 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .active {
+      color: rgba(0, 0, 0, 1);
+    }
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    width: 130px;
+    justify-content: space-between;
+
+    @include Pads() {
+      width: 300px;
+    }
+
+    @include PadsPro() {
+      width: 300px;
+    }
+
+    @include Laptops() {
+      width: 300px;
+    }
+
+    @include HiDPI() {
+      width: 300px;
+    }
+
+    .rez-delovi-btn {
+      display: none;
+      @include Pads() {
+        display: block;
+        margin-right: 1rem;
+      }
+
+      @include PadsPro() {
+        display: block;
+        margin-right: 1rem;
+      }
+
+      @include Laptops() {
+        display: block;
+        margin-right: 1rem;
+      }
+
+      @include HiDPI() {
+        display: block;
+        margin-right: 1rem;
+      }
+    }
+
+    .icon {
+      font-size: 22px;
+
+      @include Pads() {
+        font-size: 26px;
+      }
+
+      @include PadsPro() {
+        font-size: 26px;
+      }
+
+      @include Laptops() {
+        font-size: 26px;
+      }
+
+      @include HiDPI() {
+        font-size: 26px;
+      }
+    }
+
+    .front {
+      z-index: 1000;
+      position: relative;
+    }
+  }
+}
+
+.fullwidth {
+  width: 100%;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11280;
+  border-bottom: 1px solid rgb(220, 220, 220);
+}

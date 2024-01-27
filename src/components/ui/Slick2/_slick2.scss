@@ -1,0 +1,52 @@
+.slick2 {
+  position: relative;
+  margin: 0 auto;
+  margin-top: -4rem;
+
+  div {
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+
+  @include HiDPI() {
+    height: 640px;
+    width: 890px;
+  }
+
+  .next-arrow {
+    display: inline;
+    position: absolute;
+    right: -1.4rem;
+    top: 45%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 40;
+
+    @include Laptops() {
+      right: -3rem;
+    }
+
+    @include HiDPI() {
+      right: -3rem;
+    }
+  }
+
+  .prev-arrow {
+    display: inline;
+    position: absolute;
+    left: -1.4rem;
+    top: 45%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 40;
+
+    @include Laptops() {
+      left: -3rem;
+    }
+
+    @include HiDPI() {
+      left: -3rem;
+    }
+  }
+}

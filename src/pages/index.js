@@ -3,9 +3,39 @@ import apolloClient from './../apollo'
 import Link from 'next/link'
 import { gql } from '@apollo/client'
 import { useRouter } from 'next/router'
+import MainLayout from '@/components/layout/MainLayout'
+import Hero from '@/components/container/Hero'
+import Video from '@/components/ui/Video'
+import TextContent from '@/components/container/TextContent'
+import Heading2 from '@/components/ui/Heading2'
+import { useState } from 'react'
 
-export default function Home({ posts }) {
+import { motion } from 'framer-motion'
+
+import tractor from './../../public/test/traktor.png'
+import stocar from './../../public/test/stocar.png'
+import ratar from './../../public/test/ratar.png'
+import trans from './../../public/test/trans.png'
+import vocar from './../../public/test/vocar.png'
+import one from './../../public/solis-110.png'
+import two from './../../public/stocar.png'
+import three from './../../public/mulcar.webp'
+
+import img1 from './../../public/rat.webp'
+import img2 from './../../public/solis-110.png'
+import img3 from './../../public/stocar.png'
+import Image from 'next/image'
+import Slider from '@/components/Slider'
+import Slick from '@/components/ui/Slick'
+import { brands } from '@/lib/data'
+import BrandCard from '@/components/ui/BrandCard'
+import Subtitle from '@/components/ui/Subtitle'
+
+const data = [img1, img2, img3]
+
+export default function Home() {
   const router = useRouter()
+
   return (
     <>
       <Head>
@@ -14,68 +44,610 @@ export default function Home({ posts }) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div>
-        <h1>Hello,</h1>
-        <Link href='/about'>Go to about</Link>
 
-        {posts &&
-          posts.map((data, index) => (
-            <div key={data.id}>
-              <h3>{data.productDetails.naslov}</h3>
-              <p>{data.productDetails.prviOpis}</p>
-              <Link href={`/${data.slug}`}>Dalje</Link>
-              <hr />
+      <MainLayout>
+        <Hero />
+        <Video />
+        <TextContent flex>
+          <Heading2 txt={'Mehanizacija'} span={'Vrhunska poljoprivredna'} />
+          <div>
+            <p className='paragraph'>
+              Specijalizovani smo za prodaju traktora i poljoprivredne
+              mehanizacije vrhunskog kvaliteta koji su pouzdani, efikasni i
+              napravljeni da se nose sa bilo kojim poljoprivrednim ili
+              industrijskim zadatkom.
+            </p>
+
+            <p className='paragraph'>
+              Otkrijte našu široku paletu modela, izuzetnu korisničku podršku i
+              konkurentne cene.
+            </p>
+          </div>
+        </TextContent>
+
+        <div
+          className='traktori'
+          style={{ background: 'rgba(214, 62, 42, 0.1)' }}
+        >
+          <div className='content'>
+            <span>Siroka paleta modela za sve potrebe</span>
+            <h2>Traktori</h2>
+            <span className='button'>Saznajte vise</span>
+          </div>
+          <Image
+            src={tractor}
+            alt={'traktor'}
+            height={1000}
+            width={1200}
+            className='img'
+          />
+        </div>
+
+        <div className='two'>
+          <div
+            className='container'
+            style={{ background: 'rgba(222, 149, 124, 0.08)' }}
+          >
+            <div className='content'>
+              <span>Siroka paleta modela za sve potrebe</span>
+              <h2>Stocarstvo</h2>
+              <span className='button'>Saznajte vise</span>
             </div>
+            <Image
+              src={stocar}
+              alt={'traktor'}
+              height={500}
+              width={700}
+              className='img'
+            />
+          </div>
+          <div
+            className='container'
+            style={{ background: 'rgba(0, 0, 0, 0.05)' }}
+          >
+            <div className='content'>
+              <span>Siroka paleta modela za sve potrebe</span>
+              <h2>Ratarstvo</h2>
+              <span className='button'>Saznajte vise</span>
+            </div>
+            <Image
+              src={ratar}
+              alt={'traktor'}
+              height={400}
+              width={800}
+              className='img wider'
+            />
+          </div>
+        </div>
+
+        <div className='two'>
+          <div
+            className='container'
+            style={{ background: 'rgba(178, 121, 125, 0.08)' }}
+          >
+            <div className='content'>
+              <span>Siroka paleta modela za sve potrebe</span>
+              <h2>Vocarstvo</h2>
+              <span className='button'>Saznajte vise</span>
+            </div>
+            <Image
+              src={vocar}
+              alt={'traktor'}
+              height={500}
+              width={700}
+              className='img'
+            />
+          </div>
+          <div
+            className='container'
+            style={{ background: 'rgba(0, 0, 0, 0.05)' }}
+          >
+            <div className='content'>
+              <span>Siroka paleta modela za sve potrebe</span>
+              <h2>Transport</h2>
+              <span className='button'>Saznajte vise</span>
+            </div>
+            <Image
+              src={trans}
+              alt={'traktor'}
+              height={400}
+              width={800}
+              className='img ratar'
+            />
+          </div>
+        </div>
+
+        <TextContent flex>
+          <Heading2 txt={'Naša preporuka'} span={'Izdvajamo'} />
+          <div>
+            <p className='paragraph'>
+              Predstavljamo vam kolekciju najprodavanijih traktora i mašina,
+              pažljivo odabranih zbog njihovih superiornih performansi,
+              izdržljivosti i zadovoljstva kupaca bez premca.
+            </p>
+
+            <p className='paragraph'>
+              Za više informacija o proizvodima budite slobodni da nas
+              kontaktirate putem kontakt forme, e-maila ili nas pozovite.
+            </p>
+          </div>
+        </TextContent>
+
+        <div className='preporuka'>
+          <div className='preporuka-card mini'>
+            <div className='top'>
+              <div className='top-l'>
+                <h3>Solis 110</h3>
+                <span className='small'>
+                  <span className='light'>
+                    Potražnja za izvodom snage. min:
+                  </span>{' '}
+                  35kw
+                </span>
+                <span className='small'>
+                  <span className='light'>Širina bale od-do:</span> 1.2m
+                </span>
+                <span className='small'>
+                  <span className='light'>Broj osovina:</span> 1
+                </span>
+              </div>
+              <div className='top-r'>
+                <h3>Indija</h3>
+                <span className='small'>
+                  <span className='light'>Godiste:</span> 2014-2023
+                </span>
+              </div>
+            </div>
+            <div className='slika'>
+              <Image
+                src={three}
+                alt='kurini'
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+            <div className='specs'>
+              <div className='spec-box'>
+                <span className='large'>
+                  1.5<span className='light'>m</span>
+                </span>
+                <div className='small light'>Visina transporta</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  1.2x1.2<span className='light'>m</span>
+                </span>
+                <div className='small light'>Dimenzije bale</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  2.9<span className='light'>m</span>
+                </span>
+                <div className='small light'>Duzina transporta</div>
+              </div>
+            </div>
+            <div className='btn'>Saznajte vise</div>
+          </div>
+          <div className='preporuka-card mini'>
+            <div className='top'>
+              <div className='top-l'>
+                <h3>Solis 110</h3>
+                <span className='small'>
+                  <span className='light'>
+                    Potražnja za izvodom snage. min:
+                  </span>{' '}
+                  35kw
+                </span>
+                <span className='small'>
+                  <span className='light'>Širina bale od-do:</span> 1.2m
+                </span>
+                <span className='small'>
+                  <span className='light'>Broj osovina:</span> 1
+                </span>
+              </div>
+              <div className='top-r'>
+                <h3>Indija</h3>
+                <span className='small'>
+                  <span className='light'>Godiste:</span> 2014-2023
+                </span>
+              </div>
+            </div>
+            <div className='slika'>
+              <Image
+                src={three}
+                alt='kurini'
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+            <div className='specs'>
+              <div className='spec-box'>
+                <span className='large'>
+                  1.5<span className='light'>m</span>
+                </span>
+                <div className='small light'>Visina transporta</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  1.2x1.2<span className='light'>m</span>
+                </span>
+                <div className='small light'>Dimenzije bale</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  2.9<span className='light'>m</span>
+                </span>
+                <div className='small light'>Duzina transporta</div>
+              </div>
+            </div>
+            <div className='btn'>Saznajte vise</div>
+          </div>
+          <div className='preporuka-card mini'>
+            <div className='top'>
+              <div className='top-l'>
+                <h3>Solis 110</h3>
+                <span className='small'>
+                  <span className='light'>
+                    Potražnja za izvodom snage. min:
+                  </span>{' '}
+                  35kw
+                </span>
+                <span className='small'>
+                  <span className='light'>Širina bale od-do:</span> 1.2m
+                </span>
+                <span className='small'>
+                  <span className='light'>Broj osovina:</span> 1
+                </span>
+              </div>
+              <div className='top-r'>
+                <h3>Indija</h3>
+                <span className='small'>
+                  <span className='light'>Godiste:</span> 2014-2023
+                </span>
+              </div>
+            </div>
+            <div className='slika'>
+              <Image src={two} alt='kurini' layout='fill' objectFit='contain' />
+            </div>
+            <div className='specs'>
+              <div className='spec-box'>
+                <span className='large'>
+                  1.5<span className='light'>m</span>
+                </span>
+                <div className='small light'>Visina transporta</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  1.2x1.2<span className='light'>m</span>
+                </span>
+                <div className='small light'>Dimenzije bale</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  2.9<span className='light'>m</span>
+                </span>
+                <div className='small light'>Duzina transporta</div>
+              </div>
+            </div>
+            <div className='btn'>Saznajte vise</div>
+          </div>
+          <div className='preporuka-card'>
+            <div className='top'>
+              <div className='top-l'>
+                <h3>Solis 110</h3>
+                <span className='small'>
+                  <span className='light'>
+                    Potražnja za izvodom snage. min:
+                  </span>{' '}
+                  35kw
+                </span>
+                <span className='small'>
+                  <span className='light'>Širina bale od-do:</span> 1.2m
+                </span>
+                <span className='small'>
+                  <span className='light'>Broj osovina:</span> 1
+                </span>
+              </div>
+              <div className='top-r'>
+                <h3>Indija</h3>
+                <span className='small'>
+                  <span className='light'>Godiste:</span> 2014-2023
+                </span>
+              </div>
+            </div>
+            <div className='slika'>
+              <Image src={one} alt='kurini' layout='fill' objectFit='contain' />
+            </div>
+            <div className='specs'>
+              <div className='spec-box'>
+                <span className='large'>
+                  1.5<span className='light'>m</span>
+                </span>
+                <div className='small light'>Visina transporta</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  1.2x1.2<span className='light'>m</span>
+                </span>
+                <div className='small light'>Dimenzije bale</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  2.9<span className='light'>m</span>
+                </span>
+                <div className='small light'>Duzina transporta</div>
+              </div>
+            </div>
+            <div className='btn'>Saznajte vise</div>
+          </div>
+          <div className='preporuka-card mini'>
+            <div className='top'>
+              <div className='top-l'>
+                <h3>Solis 110</h3>
+                <span className='small'>
+                  <span className='light'>
+                    Potražnja za izvodom snage. min:
+                  </span>{' '}
+                  35kw
+                </span>
+                <span className='small'>
+                  <span className='light'>Širina bale od-do:</span> 1.2m
+                </span>
+                <span className='small'>
+                  <span className='light'>Broj osovina:</span> 1
+                </span>
+              </div>
+              <div className='top-r'>
+                <h3>Indija</h3>
+                <span className='small'>
+                  <span className='light'>Godiste:</span> 2014-2023
+                </span>
+              </div>
+            </div>
+            <div className='slika'>
+              <Image src={one} alt='kurini' layout='fill' objectFit='contain' />
+            </div>
+            <div className='specs'>
+              <div className='spec-box'>
+                <span className='large'>
+                  1.5<span className='light'>m</span>
+                </span>
+                <div className='small light'>Visina transporta</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  1.2x1.2<span className='light'>m</span>
+                </span>
+                <div className='small light'>Dimenzije bale</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  2.9<span className='light'>m</span>
+                </span>
+                <div className='small light'>Duzina transporta</div>
+              </div>
+            </div>
+            <div className='btn'>Saznajte vise</div>
+          </div>
+          <div className='preporuka-card mini'>
+            <div className='top'>
+              <div className='top-l'>
+                <h3>Solis 110</h3>
+                <span className='small'>
+                  <span className='light'>
+                    Potražnja za izvodom snage. min:
+                  </span>{' '}
+                  35kw
+                </span>
+                <span className='small'>
+                  <span className='light'>Širina bale od-do:</span> 1.2m
+                </span>
+                <span className='small'>
+                  <span className='light'>Broj osovina:</span> 1
+                </span>
+              </div>
+              <div className='top-r'>
+                <h3>Indija</h3>
+                <span className='small'>
+                  <span className='light'>Godiste:</span> 2014-2023
+                </span>
+              </div>
+            </div>
+            <div className='slika'>
+              <Image
+                src={three}
+                alt='kurini'
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+            <div className='specs'>
+              <div className='spec-box'>
+                <span className='large'>
+                  1.5<span className='light'>m</span>
+                </span>
+                <div className='small light'>Visina transporta</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  1.2x1.2<span className='light'>m</span>
+                </span>
+                <div className='small light'>Dimenzije bale</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  2.9<span className='light'>m</span>
+                </span>
+                <div className='small light'>Duzina transporta</div>
+              </div>
+            </div>
+            <div className='btn'>Saznajte vise</div>
+          </div>
+          <div className='preporuka-card mini'>
+            <div className='top'>
+              <div className='top-l'>
+                <h3>Solis 110</h3>
+                <span className='small'>
+                  <span className='light'>
+                    Potražnja za izvodom snage. min:
+                  </span>{' '}
+                  35kw
+                </span>
+                <span className='small'>
+                  <span className='light'>Širina bale od-do:</span> 1.2m
+                </span>
+                <span className='small'>
+                  <span className='light'>Broj osovina:</span> 1
+                </span>
+              </div>
+              <div className='top-r'>
+                <h3>Indija</h3>
+                <span className='small'>
+                  <span className='light'>Godiste:</span> 2014-2023
+                </span>
+              </div>
+            </div>
+            <div className='slika'>
+              <Image
+                src={three}
+                alt='kurini'
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+            <div className='specs'>
+              <div className='spec-box'>
+                <span className='large'>
+                  1.5<span className='light'>m</span>
+                </span>
+                <div className='small light'>Visina transporta</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  1.2x1.2<span className='light'>m</span>
+                </span>
+                <div className='small light'>Dimenzije bale</div>
+              </div>{' '}
+              <div className='spec-box'>
+                <span className='large'>
+                  2.9<span className='light'>m</span>
+                </span>
+                <div className='small light'>Duzina transporta</div>
+              </div>
+            </div>
+            <div className='btn'>Saznajte vise</div>
+          </div>
+        </div>
+
+        <TextContent flex>
+          <Heading2 txt={'Kvalitet i sigurnost'} span={'Poverenje'} />
+          <div>
+            <p className='paragraph'>
+              Naš prodajni program sačinjavaju traktori inostranih proizvođača
+              YTO, Solis, Tafe, Zetor, Ursus, Belarus, Mahindra, Hattat, John
+              Deere i dr.
+            </p>
+
+            <p className='paragraph'>
+              Ova imena od poverenja pružaju izuzetan kvalitet, pouzdanost i
+              inovativnost za vaše poljoprivredne i industrijske potrebe.
+            </p>
+          </div>
+        </TextContent>
+
+        <Slick>
+          {brands.map((brand, index) => (
+            <BrandCard src={brand.src} alt={'Card'} key={index} />
           ))}
-      </div>
+        </Slick>
+
+        <TextContent flex>
+          <Heading2 txt={'Rezervni delovi'} span={'Originalni'} />
+          <div>
+            <p className='paragraph'>
+              Jugometal isporučuje originalne rezervne delove za servisiranje
+              traktora i mašina u garantnom i postgarantnom periodu.
+            </p>
+
+            <p className='paragraph'>
+              Godinama unazad snabdevamo domaće tržište sa originalnim delovima
+              priključnih mašina slovenačkog proizvođača ,SIP Šempeter a u
+              skorije vreme i delovima za domaće traktore, IMT i IMR. Takođe u
+              našem servisnom centru možete dobiti usluge servisiranja pomenutih
+              traktora i mašina.
+            </p>
+          </div>
+        </TextContent>
+      </MainLayout>
     </>
   )
 }
 
-export const getStaticProps = async () => {
-  const { data } = await apolloClient.query({
-    query: gql`
-      query {
-        posts(where: { categoryName: "featured" }) {
-          nodes {
-            productDetails {
-              brend
-              category
-              drugiOpis
-              k1
-              k2
-              k3
-              k4
-              k5
-              naslov
-              prviOpis
-              subcategory
-              slika {
-                sourceUrl
-              }
-            }
-            id
-            slug
-          }
-        }
-        mediaItems(where: { title: "jugovideo" }) {
-          nodes {
-            mediaItemUrl
-            title
-          }
-        }
-      }
-    `,
-  })
+// export async function getStaticProps() {
+//   const { data } = await apolloClient.query({
+//     query: gql`
+//       query {
+//         mediaItems(where: { title: "jugovideo-new" }) {
+//           nodes {
+//             mediaItemUrl
+//             title
+//           }
+//         }
+//       }
+//     `,
+//   })
 
-  const posts = data.posts.nodes
-  const media = data.mediaItems.nodes
+//   const media = data.mediaItems.nodes
 
-  return {
-    props: {
-      posts,
-      media,
-    },
-    revalidate: 120,
-  }
-}
+//   return {
+//     props: {
+//       media,
+//     },
+//   }
+// }
+
+// export const getStaticProps = async () => {
+//   const { data } = await apolloClient.query({
+//     query: gql`
+//       query {
+//         posts(where: { categoryName: "featured" }) {
+//           nodes {
+//             productDetails {
+//               brend
+//               category
+//               drugiOpis
+//               k1
+//               k2
+//               k3
+//               k4
+//               k5
+//               naslov
+//               prviOpis
+//               subcategory
+//               slika {
+//                 sourceUrl
+//               }
+//             }
+//             id
+//             slug
+//           }
+//         }
+//         mediaItems(where: { title: "jugovideo" }) {
+//           nodes {
+//             mediaItemUrl
+//             title
+//           }
+//         }
+//       }
+//     `,
+//   })
+
+//   const posts = data.posts.nodes
+
+//   return {
+//     props: {
+//       posts,
+//     },
+//     revalidate: 120,
+//   }
+// }

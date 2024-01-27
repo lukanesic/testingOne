@@ -1,0 +1,54 @@
+.hero {
+  height: 800px;
+  width: 1500px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 3rem;
+
+  .heroContent {
+    h1 {
+      width: 760px;
+      font-weight: 600;
+      color: #333;
+      font-size: 65px;
+      letter-spacing: -3px;
+      line-height: 4.5rem;
+      margin-bottom: 3rem;
+      margin-top: 1rem;
+    }
+
+    .redTxt {
+      color: #ed1d24;
+    }
+
+    .welcome {
+      color: rgba(51, 51, 51, 0.6);
+    }
+
+    p {
+      font-weight: 300;
+      color: rgba(51, 51, 51, 0.6);
+      width: 600px;
+      font-size: 20px;
+      letter-spacing: -0.2px;
+      line-height: 1.8rem;
+    }
+  }
+
+  .heroSlide {
+    background: url('./../../public/slider/heroZetor.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    width: 890px;
+  }
+}
+.heroCT {
+  height: 600px;
+  width: 890px;
+  border: 1px solid red;
+  background-color: #ed1d2448;
+}
